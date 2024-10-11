@@ -1,8 +1,11 @@
 package hiber.model;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 
 @Entity
+@Component
 @Table(name = "users")
 public class User {
 
@@ -18,6 +21,9 @@ public class User {
 
    @Column(name = "email")
    private String email;
+
+   @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
+   private Car car;
 
    public User() {}
    
